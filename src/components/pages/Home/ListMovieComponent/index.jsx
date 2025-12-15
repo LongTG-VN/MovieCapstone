@@ -1,0 +1,39 @@
+import React from "react";
+
+const ListMovieComponent = () => {
+  return (
+    <div className="container mx-auto px-5 my-4">
+      <h1 className="text-center text-4xl">Danh sách Film</h1>
+      <div className="grid grid-cols-5 grid-rows-2 gap-4 text-center">
+       <div className="group relative overflow-hidden">
+      
+      {/* 1. Hình ảnh */}
+      <img 
+    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NEA4ODRENDQ0NEQ4NDQ0NDQ8NDw0NFxcZFiASExMkHiggGB4nHRUWLT0tJjU3Li46GB8/ODQsNygtMSsBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAQYAwQMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAAAQIDBAUGCAf/xAA8EAABAwICBQgIBgMAAwAAAAAAAQIDBBEFEgYHITFRFDNBUnSRkrIWIjRhcXKB0RMVMkJisYKhwQhDov/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD7iAUTStYmZy2RAKwYH5rFwf3J9yUxOPg/uT7gZwMP8xj4P7k+5P5gzg/uT7gZYMXl7ODu5PuOXM4O7k+4GUDG5azg7uT7jljODu5PuBkgx+WN4O7k+45Y3g7uQDIBj8sbwd3IRyxnB3cn3AyQY3LWcHdyfcjlrODu5PuBlAxeXM4O7k+5HL2cH9yfcDLBh/mLOD+5PuQuJR8H9yfcDNBgrisfB/cn3L1NWRy7G3RU25XJZbAZAMZ1W1srYX+q6RrnxL0Py2u34pdO/wBymSAAAA1mL3VWJ0Iir9TZmBiDbub8ANW5GtRXOVGtaiuc5VsjWptVVUpw+qgqY2zU8kc8L75ZInI9jrKqLZfiimq02VXww0DFtJiszKLZvSmsr5nfSJr0/wAkNTqyTkk+L4OuxKGq/Hpm33Uk6ZmtTp2er4wO2SMrRheRhUjQLKMJyF5Gk5QLOQnIXspOUCzkGQvZRlAs5BkL2UZQLGQhWGRlIygYysIWMycpSrQMVYyhYzMVhQrAMN0ZVStVsjFTrIn0XZ/0yFYRGz1m/M3+0AwNOXKyOlkbseypZlVN6XY/7J3G9w+o/FjY/pVNvxNBrA9ng7TH5Hm00f5loGzAAAxatLqnwMoxqtmZFRFc1VaqI5tszb9KXRUuBwLo6vEMXqJaSWCGPB4komunpXVTX1M1pJFaiSMyq1rY295q65lVhmP4bVVcsEzcVilw174KZ9IxHtVqsRyLI+7lc6NN6bvcddg2jlDgjaqoZNURwvzVFW6qqVlYr02rK5VS+b39N9t9hbxfRnDsebS1cktRLExEmpHU9QsUbFWy522S+bYm/alugDpkaSjSYY8rWtVznq1EbneqK51ulyoiJcuWAosTYqsTYCixNiqxNgKLCxXYWAosLFdhYC3YWLliLAW8pGUu2IsBaVpSrS8qEWAsK0pRu1vzN/tC+rSlU3fM3+0A0esD2eDtMfkebTR7mWmr1gezwdpj8jzaaPcy0DZgAAWal7WIr3Llaxquc5dyNTaql4tTxtejmuTM16K1yLuVq7FQDyzrF1i1eNPdE1Vhw9j1WGnbsWRE3PmX9zum25P9rRq81iVeCSNZdZ6B7rzUrtuVF3viX9rv9L08U7vH9UWGYU2oxGoqpX0VMizMo3Rsa+V/7YFlvtRzrJsRF29G8o0f1SYbi8dPiVPVSxUtS1sktGyNrnRS7nxNkv6qI66JdF2W3gfb6eVsrGSMXMyRrXsd1muS6L3KXLFNPA2JjI2JlZG1rGNT9rWpZE7kLgEWFiQAsALABYkAQCQBFiLEgCLEWKgBTYixWRYChUKHJu+Lf7Qu2KXpu+Lf7QDndYHs8HaY/I82mj3MtNXrA9ng7TH5Hm00e5loGzAAAhSSAIsSiAkCCQAAAAAAAAAAAAAAAAAIBIAgok3fVv8AaFwol3fVv9oBzesD2eDtMfkebTR7mWmr1gezwdpj8jzaaPcy0DZgAAAAAAAAAAAAAAAAFp9RG17InPYksiPdHGrkR72ttdWt3qiZm96AXQAAAAAAAAAAKJd31Z/aFZRLu/yZ/aAc3rA9ng7TH5Hm00e5lpq9YHs8HaY/I82mj3MtA2YAAAAAAAAAAAAAAcxpvpxQ4JFnqHZ53Iv4FJGqfiyrxXqt96/7XYBsNKNI6TCaZ9XWPyRt2MYllkmktdI429Llt/pVWyIp5dx7T3EazEW4pnWGaB16RjFuymj6ida6Kt7/AKrr0bDF0y0urMZqFnqneql0gp2qv4VOzg1OPFd69yJz4HrfV5pxTY5To9lo6uJESqpr7Y3ddvFi9C/RTrDxXgmMVOHzx1NJI6GeNbtc3pTpa5NzkXgp6U1c6z6TGWtgmyUuIollgV3qTr1oVXf8u9PeiXA+gAAAAAAAAFEu5PmZ5kKyiXcnzM8yAc3rA9ng7TH5Hm00e5lpq9YHs8HaY/I82mj3MtA2YAAAAAAAAAAAGBj+KMoaWpq5NrKaKSZU62VLo1Pitk+oHEa19ZLcGZyalyyYjK3MiO9ZlLGv/senS5ehPquyyL5rxCumqpXz1Ej5ppVzSSSOVznL8SrFsRmrJ5qqocr5qh7pZHLf9SruTgibkToREMQAAABUx6tVHNVWuaqOa5q2VFTpRSkAfedUGtR07o8NxV+aV1o6Sseu2VdyRSr0u4O6enbtX7UeHWuVFRUuiptRUWyovE9Z6qtJXYthkE8q5qiK9NUre6umZb1l97mq1f8AIDrwAAAAAol3J8zPMhWUTbk+ZnmQDm9YHs8HaY/I82mj3MtNXrA9ng7TH5Hm00e5loGzAAAAAAAAAAA4rXLG9+B4ikd8yNgctlsuRs0bnf8AyinamPX0cdTFLBMmeKdj4pG9ZjkVFTuUDxIDp9OtCazBJ3MnY51M5ypTVTUvHMzaqIq/tfbei8F3ptOYAFSMcqK5EVWtsiustkVd11+i9xl4RhVTXSsp6SJ9RO/9McaXW3FV3InvXYh9lo9EKSgdQaPVTmPmxenrZa2ZifoqfUdEsa8GLC9EvvVV3XsB8NBvtL9E63B53QVbFRFVfwZ2ov4U7Osx3/N6dJoQB6G/8bmu5BWuX9C1dm/MkbL/AOlafDdHsArMTmbT0UT5pHKl1RFyRt60jtzU+J6y0J0cjwihp6Jio9Y0V0siJb8WZ21zvhfd7kQDegAAAABRNuT5meZCsom3J8zPMgHN6wPZ4O0x+R5tNHuZaavWB7PB2mPyPNpo9zLQNmAAAAAAAAAAAAAt1EEcrXRytZJG5LOZI1HtcnBUXYpzE+rbAJHZnUFMi8GI6NvhRUQ6sAYGE4NR0LVZRwQUzF3pDG2PN73Km/6nmPTjTF9RjjsSp3ZmUc0TaSzvVdFCqblT9rlRy/5n2nXNpcuG0LqeBVWtrmuijRiKrooF2Ol92xbJ719ynmPk8nUf4VA9mQOpMUpYpHMiqaWqjZK1krGyMc1yX2tXZfaaVdWuAK7PyCmve9kzo3w3scB/4/6WKjHYRU3arVdLQueiojmrdz4U96LdyfF3A+1gYuHYbTUjEipYYaeNP2QxtjbfjZEMoAAAAAAAFE25PmZ5kKy3NuT5meZAOc1gezwdpj8jzaaPcy01esD2eDtMfkebTR7mWgbMAAACAJBBIAAAAAAAAAAAAAAAAAAAAAALc25PmZ5kKyibcnzM8yAc5rA9ng7TH5Hm00e5lpq9YHs8HaY/I82mj3MtA2YAAEKSUqBIIAEggkAAAJBAAkXIAEggASQAAAAAEFuonZEx8ki5WRtc97rKtmol1WybdwF0tzbk+ZnmQwMEx+ixBr30UzKlkao1748yta5dtr232M6XcnzM8yAc9rA9ng7TH5Hm00e5lpq9YHs8HaY/I82mj3MtA2YAAFDistyLtAXJuUXJuBVcFNybgVApuLgVApuLgVAgASCLkXAqBTcXAqIuRci4FR8E0r10YlT19TDSx0raalmkgRk0bnvlyOVqq52ZLXVF3btm8+83PkGtbVU6sfLiOG25S+8lRSLsSdyJtfEvQ9bbU6fcu8OIp9a8+HtSnwaCnpqRHyzubPH+JI+WR6vVqqioiNaitalttmIt9tk+8aG6QfmuH0lcrPwnVFs8aLdGyMlWNcvuuxbfE8+6utWdTjD1kmV9LQxPVkkqttJK9F2xxNXpTpVdie9dh6ToaGGkhhpqdqRwwJFFExNuViKib+lQNVrA9ng7TH5Hm00e5lpq9YHs8HaY/I82mj3MtA2YAAFmddqF4xqpbKnwAhHE3LKOKkcBduTctI4nMBcuTctZicwFy4uW8xOYCu4uUZhmAruLlGYZgK7i5bzDMBXcXLeYjMBcucXR6YVr8WkweSjgiWOPlK1PLXubJTerZ0bPwtrvW3La1nbdh1+Y+cayGPpMRwXE4n/gK+VcLnmyNksyW6tVWrsVEvIv0A6rTbHpcJo5KyGCKoZC5FlidOtO6z3ol2WY5HLmdu2b13qbHC6iolhhkqomU071jc+BkqzJFdyLlV+Vt147LfHechjtJVVFdhuHz1PKYc7sSqo0po4USGnVMiOVFVVR0rmbP4qdurtrfnZ5kA1OsD2eDtMfkebTR7mWmr1gezwdpj8jzaaPcy0DZgAAYNe6yp8DONdiqKmV3RtT6gWkeVI8xEkKkkAy0cTnMVHlSPAycxOYxkeTnAyMxOYx84zgZGYZixnGcC/mIzFnORnAv5iMxZzkK8C9nIzllXlKvAvq85jWTha12F1sLUVZGR8ohy/q/Fi9dET3qiKn1N+shSsgHK6vKmWubNi1Q1WSVbYKaJrv1Np4G5VX3ZplmXuOva/az54/MhjukKqZVdIxqdZHfRFv/wA/2BjawPZ4O0x+R5tNHuZaafWDKiRUsf7nzo5E/i1jrr3ub3m40f5loGzAAAsvljVfwnK3M5Lox1ruTiidP/C8YuI4fDVMWOZqPbvS+9rus1ehQI/Loeqvjd9x+XQ8F8bvuctUaGuRVyPe5vR67kX+yz6ISdaTxuA7D8vi4O8bhyCLg7xOOP8ARCTrSeNw9EJOtJ43AdhyCLg7xuJ5DHwd4nHHeiEnWk8bh6ISdaTxuA7HkMfB3icOQx/y8TjjvRCTrSeNw9EJOtJ43AdjyGP+XjcOQx/y8TjjvRCTrSeNw9EJOtJ43AdjyGP+XicOQx/y8bjjvRCTrSeNw9EJOtJ43AdhyCP+XjcOQRcHeNxx/ohJ1pPG4eiEnWk8bgOw5BFwd43Efl8XB3jcch6ISdaTxuHohJ1pPG4Dr/y6Lg7xuI/LYeDvG77nI+iEnWk8bh6ISdaTxuA678sh4O8bvuW6iekoWK+RzIW8XOVXv9zU3u+CHK+iEnWk8biG6GrmzKiqvFVuveBgVdbJiVUkytVkMfqQMXejb7XL71/4nA77CoskTUNfheBNisq22dBu0S2xAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/9k="
+        // Đảm bảo ảnh co dãn mượt mà (Optional)
+        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+      />
+      
+      {/* 2. Lớp Overlay (Phần chữ) */}
+      <div 
+        className="absolute inset-0 bg-black/60 items-end flex justify-center p-4 
+                   opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+        <p className="text-white text-lg font-bold " >
+        aa
+        </p>
+      </div>
+      
+    </div>
+
+        <div>01</div>
+        <div>01</div>
+        <div>01</div>
+        <div>01</div>
+        <div>09</div>
+      </div>
+    </div>
+  );
+};
+
+export default ListMovieComponent;
