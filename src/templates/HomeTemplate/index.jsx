@@ -1,13 +1,13 @@
 import React from 'react'
-import NavbarComponent from '../../components/NavbarComponent'
-import FooterComponent from '../../components/FooterComponent'
-import CarouselComponent from './CarouselComponent/index.'
+import NavbarComponent from '../../components/_component/NavbarComponent'
+import FooterComponent from '../../components/_component/FooterComponent'
+import { Outlet } from 'react-router-dom'
 
 const HomeTemplate = () => {
   return (
     <>
       <NavbarComponent/>
-      <CarouselComponent/>
+      <Outlet/>
       <FooterComponent/>
     </>
    
