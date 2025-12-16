@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { DetailAPI } from './slice';
+import RapDetailComponent from './RapDetail';
 
 const DetailComponent = () => {
     const params = useParams();
@@ -12,9 +13,9 @@ const DetailComponent = () => {
 
     const { data, error, loading } = state;
 
-
+    const movie = data;
+    
     useEffect(() => {
-        // ✅ Thêm dispatch và id vào dependency array
         dispatch(DetailAPI(id));
     }, [dispatch, id]); 
 
@@ -60,55 +61,59 @@ const DetailComponent = () => {
         );
     }
     
-    // Giả định data đã có và là đối tượng phim (để code gọn hơn)
-    const movie = data;
+    // Hàm render lịch chiếu phim (Chỉ gọi khi data đã sẵn sàng)
+    const renderRap = () => {
+        if (data) {
+            // ✅ Đảm bảo truyền đủ props cần thiết
+            return <RapDetailComponent maPhim={data.maPhim} phimDetail={data} />;
+        }
+        return null;
+    }
 
     return (
-        <div className='container'>
+        <div className='container mx-auto'> 
+            {/* --- 1. PHẦN HEADER CHI TIẾT PHIM (ẢNH NỀN) --- */}
             <div
                 className="relative"
                 style={{
-                    // ✅ Sử dụng ảnh poster phim làm background
                     backgroundImage: `url(${movie.hinhAnh})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    height: '500px',
+                    // ✅ Giảm chiều cao trên mobile, giữ 500px trên desktop
+                    height: '350px', 
+                    '@media (min-width: 768px)': {
+                        height: '500px'
+                    }
                 }}
             >
-                {/* Lớp Phủ Màu Tối (Overlay) - Giữ nguyên để chữ dễ đọc */}
+                {/* Lớp Phủ Màu Tối (Overlay) */}
                 <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
                 
-                {/* THÊM: Lớp Blur (Làm mờ ảnh nền) - Yêu cầu Tailwind CSS config hỗ trợ backdrop-filter */}
-                {/* <div className="absolute inset-0 backdrop-blur-md z-10"></div> */}
-
                 {/* Nội dung Chi tiết Phim */}
-                {/* ✅ Xóa ml-23 không tồn tại, dùng ml-8 bên dưới */}
-                <div className='relative ml-20 z-20 h-full flex items-center p-8 -z-0'>
+                <div className='relative z-20 h-full flex flex-col sm:flex-row items-center p-4 sm:p-8'> 
                     
                     {/* Poster Phim */}
-                    <div className="flex-shrink-0 z-0">
+                    <div className="flex-shrink-0 mb-4 sm:mb-0"> 
                         <img 
                             src={movie.hinhAnh} 
                             alt={movie.tenPhim} 
-                            className="rounded-lg shadow-2xl w-48 h-72 object-cover"
+                            // ✅ Kích thước Responsive Poster
+                            className="rounded-lg shadow-2xl w-32 h-48 sm:w-48 sm:h-72 object-cover"
                         />
                     </div>
 
                     {/* Thông tin Tóm tắt */}
-                    <div className='ml-8 text-amber-50'>
-                        {/* ✅ Dữ liệu động: tenPhim */}
-                        <h1 className='text-4xl font-bold mb-2'>{movie.tenPhim}</h1>
+                    <div className='ml-0 sm:ml-8 text-amber-50 text-center sm:text-left'>
+                        {/* Tên Phim */}
+                        <h1 className='text-3xl sm:text-4xl font-bold mb-2'>{movie.tenPhim}</h1>
                         
-                        <div className="text-xl font-medium mb-4">
-                            {/* ✅ Dữ liệu động: danhGia */}
+                        <div className="text-md sm:text-xl font-medium mb-4">
                             <p className="mb-1">⭐️ Đánh giá: {movie.danhGia}/10</p>
-                            
-                            {/* ✅ Dữ liệu động: ngayKhoiChieu */}
-                            <p className="text-base">Ngày khởi chiếu: {formatNgayKhoiChieu(movie.ngayKhoiChieu)}</p>
+                            <p className="text-sm sm:text-base">Ngày khởi chiếu: {formatNgayKhoiChieu(movie.ngayKhoiChieu)}</p>
                         </div>
                         
-                        {/* ✅ Dữ liệu động: moTa (dùng line-clamp-4 để giới hạn dòng) */}
-                        <p className="text-base max-w-lg mb-4 line-clamp-4">
+                        {/* Mô tả (Ẩn trên mobile để tiết kiệm không gian) */}
+                        <p className="hidden md:block text-base max-w-lg mb-4 line-clamp-4">
                             {movie.moTa}
                         </p>
 
@@ -124,6 +129,12 @@ const DetailComponent = () => {
                     </div>
                 </div>
             </div>
+
+            {/* --- 2. PHẦN LỊCH CHIẾU PHIM (RapDetailComponent) --- */}
+            <div className='my-7 px-2 sm:px-4 md:px-50'> 
+                {renderRap()}
+            </div>
+
         </div>
     );
 }

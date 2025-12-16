@@ -3,6 +3,7 @@ import  ListCarouselStore  from "../components/pages/Home/CarouselComponent/slic
 import  ListMovieStore  from "../components/pages/Home/ListMovieComponent/slice";
 import  RapChieuFilmStore  from "../components/pages/Home/RapChieuPhimComponent/slice";
 import  DetailStore from "../components/pages/Detail/slice";
+import  DetailRapStore  from "../components/pages/Detail/RapDetail/slice";
 
 const store = configureStore({
     reducer: {
@@ -10,6 +11,8 @@ const store = configureStore({
   ListMovieStore,
   RapChieuFilmStore,
   DetailStore,
+  DetailRapStore
+  
     }
 
 })

@@ -29,16 +29,16 @@ const RacChieuPhimComponent = () => {
         // Children Tab Cấp 1: Tab Lồng (Tab Cấp 2)
        children: (
         <div className="p-4 border border-gray-200 bg-white">
-
-          
           <Tabs
             tabPosition="left"
             // 🛑 BƯỚC 1: Dùng tabBarStyle để giới hạn chiều cao cột Tab và thêm scroll 
             tabBarStyle={{ 
               maxHeight: '500px', // Đặt chiều cao tối đa cho cột Tab (VD: 500px)
+              overflowY: 'auto',  // Thêm thanh cuộn dọc khi nội dung vượt quá 500px
               width: '400px',     // Giới hạn chiều rộng cột Tab (Đã fix trước đó)
             }}
             // BƯỚC 2: Thêm class CSS cho toàn bộ Tabs container (Optional)
+            className="flex-shrink-0" 
             items={renderListCumRap(rap)}
           />
         </div>
@@ -71,7 +71,7 @@ const RacChieuPhimComponent = () => {
               {phim.tenPhim}
             </h4>
             {/* Địa chỉ vẫn giữ truncate w-40 nếu cần */}
-            <div class="grid grid-cols-8 gap-2">
+            <div class="grid grid-cols-5 gap-2">
              {renderLichChieuPhim(phim)}
             </div>
           </div>
@@ -110,10 +110,9 @@ return gioPhut;
         // 1. Label Tab Cấp 2: Hiển thị Tên Chi nhánh Rạp
         label: (
           // 🛑 SỬA: Thêm max-w-sm hoặc max-w-xs vào container này
-          
           <div
             // max-w-xs (max-width: 320px) giúp giới hạn độ rộng của Label Tab
-            className="w-auto text-left py-2 px-1 hover:bg-gray-100 transition duration-150 flex items-center space-x-2 bg-white max-h-[500px] overflow-y-auto"
+            className="max-w-xs text-left py-2 px-1 hover:bg-gray-100 transition duration-150 flex items-center space-x-2"
           >
             <img
               src={rap.logo}
@@ -140,7 +139,7 @@ return gioPhut;
           <div 
             // ✅ SỬA: Dùng max-h-[500px] để giới hạn chiều cao và hiển thị thanh scroll
             // Giá trị 500px này có thể được điều chỉnh (ví dụ: max-h-[70vh])
-            className=" bg-white max-h-[500px] overflow-y-auto"
+            className="p-4 bg-white max-h-[500px] overflow-y-auto"
           >
             {/* Nội dung danh sách phim */}
             {renderLichFilm(cumRap)} 
