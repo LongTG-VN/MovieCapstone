@@ -8,7 +8,7 @@ const HomeCompoment = () => {
     <>
     <CarouselComponent/>
     <ListMovieComponent/>
-    {/* <RacChieuPhimComponent/>  */}
+    <RacChieuPhimComponent/> 
     </>
    
   )

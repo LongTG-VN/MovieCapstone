@@ -52,7 +52,7 @@ const ListMovieComponent = () => {
 
   
   return (
-    <div className="container mx-auto px-5 my-4">
+    <div className="container mx-auto px-15 md:px-40 my-4">
       
       <h1 className="text-center text-4xl">Danh sách Film</h1>
     
