@@ -39,7 +39,7 @@ const ListMovieComponent = () => {
             <hr className="w-1/2 border-t-2 border-white/70" />
 
             <Link
-              to="/news"
+              to={`/detail/${film.maPhim}`}
               className="px-3 py-1.5 md:px-4 md:py-2 bg-red-600 hover:bg-red-700 text-white text-sm md:text-base font-semibold rounded transition duration-200"
             >
               Detail

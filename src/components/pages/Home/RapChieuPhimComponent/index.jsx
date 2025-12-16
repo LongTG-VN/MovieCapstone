@@ -29,6 +29,8 @@ const RacChieuPhimComponent = () => {
         // Children Tab Cấp 1: Tab Lồng (Tab Cấp 2)
        children: (
         <div className="p-4 border border-gray-200 bg-white">
+
+          
           <Tabs
             tabPosition="left"
             // 🛑 BƯỚC 1: Dùng tabBarStyle để giới hạn chiều cao cột Tab và thêm scroll 
@@ -69,7 +71,7 @@ const RacChieuPhimComponent = () => {
               {phim.tenPhim}
             </h4>
             {/* Địa chỉ vẫn giữ truncate w-40 nếu cần */}
-            <div class="grid grid-cols-5 gap-2">
+            <div class="grid grid-cols-8 gap-2">
              {renderLichChieuPhim(phim)}
             </div>
           </div>
@@ -108,9 +110,10 @@ return gioPhut;
         // 1. Label Tab Cấp 2: Hiển thị Tên Chi nhánh Rạp
         label: (
           // 🛑 SỬA: Thêm max-w-sm hoặc max-w-xs vào container này
+          
           <div
             // max-w-xs (max-width: 320px) giúp giới hạn độ rộng của Label Tab
-            className="w-auto text-left py-2 px-1 hover:bg-gray-100 transition duration-150 flex items-center space-x-2"
+            className="w-auto text-left py-2 px-1 hover:bg-gray-100 transition duration-150 flex items-center space-x-2 bg-white max-h-[500px] overflow-y-auto"
           >
             <img
               src={rap.logo}
@@ -137,7 +140,7 @@ return gioPhut;
           <div 
             // ✅ SỬA: Dùng max-h-[500px] để giới hạn chiều cao và hiển thị thanh scroll
             // Giá trị 500px này có thể được điều chỉnh (ví dụ: max-h-[70vh])
-            className="p-4 bg-white max-h-[500px] overflow-y-auto"
+            className=" bg-white max-h-[500px] overflow-y-auto"
           >
             {/* Nội dung danh sách phim */}
             {renderLichFilm(cumRap)} 
