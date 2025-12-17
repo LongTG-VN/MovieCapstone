@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import homeAPI from "../../../../service/HomeAPI";
+import homeAPI from "../../../service/HomeAPI";
 
 
 const initialState = {
@@ -8,11 +8,12 @@ const initialState = {
     error: null
 }
 
-export const DetailRapAPI = createAsyncThunk (
-    "DetailRaplSlice/DetailRap", async (maPhim, {rejectWithValue}) => {
+export const MaLichChieuAPI = createAsyncThunk (
+    "MaLichChieulSlice/MaLichChieu", async (MaLichChieu, {rejectWithValue}) => {
         try {
-         const response = await homeAPI.get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`);
+         const response = await homeAPI.get(`QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${MaLichChieu}`);
      
+        console.log(response.data.content);
         
 
          return response.data.content;
@@ -26,19 +27,19 @@ export const DetailRapAPI = createAsyncThunk (
 )
 
 
-const DetailRapSlice = createSlice({
-    name : "DetailRapSlice",
+const MaLichChieuSlice = createSlice({
+    name : "MaLichChieuSlice",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-  builder.addCase(DetailRapAPI.pending,(state) => {
+  builder.addCase(MaLichChieuAPI.pending,(state) => {
                 state.loading = true
               }) ;
-                builder.addCase(DetailRapAPI.fulfilled,(state,action) => {
+                builder.addCase(MaLichChieuAPI.fulfilled,(state,action) => {
                 state.loading = false,
                 state.data = action.payload
               }) ;
-              builder.addCase(DetailRapAPI.rejected,(state,action) => {
+              builder.addCase(MaLichChieuAPI.rejected,(state,action) => {
                 state.loading = false,
                 state.error = action.payload
               }) ;
@@ -47,4 +48,4 @@ const DetailRapSlice = createSlice({
 
 
 
-export default DetailRapSlice.reducer
+export default MaLichChieuSlice.reducer

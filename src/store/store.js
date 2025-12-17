@@ -5,6 +5,7 @@ import  RapChieuFilmStore  from "../components/pages/Home/RapChieuPhimComponent/
 import  DetailStore from "../components/pages/Detail/slice";
 import  DetailRapStore  from "../components/pages/Detail/RapDetail/slice";
 import  UserLoginStore  from "../components/pages/Login/slice";
+import  MaLichChieuStore  from "../components/pages/Checkout/slice";
 const store = configureStore({
     reducer: {
   ListCarouselStore,
@@ -12,8 +13,8 @@ const store = configureStore({
   RapChieuFilmStore,
   DetailStore,
   DetailRapStore,
-  UserLoginStore
-  
+  UserLoginStore,
+  MaLichChieuStore
     }
 
 })

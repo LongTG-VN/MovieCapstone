@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DetailRapAPI } from './slice';
 import { Radio, Space, Tabs } from 'antd';
+import { Link, NavLink } from 'react-router-dom';
 
 const RapDetailComponent = (props) => {
     // State để điều khiển vị trí Tab Cấp 1 (Hệ thống Rạp)
@@ -45,12 +46,13 @@ const RapDetailComponent = (props) => {
             return (
                 // ✅ FIX BỐ CỤC: Loại bỏ flex-grow khỏi div bọc
                 <div key={key}>
-                    <button 
+                    <NavLink 
+                    to={`/checkout/${phim.maLichChieu}`}
                         className='bg-green-600 hover:bg-green-700 text-white font-medium px-3 py-1 rounded-md transition duration-150 text-sm whitespace-nowrap'
                         // TODO: Thêm onClick để đặt vé
                     >
                         {Convert(phim.ngayChieuGioChieu)}
-                    </button>
+                    </NavLink>
                 </div>
             );
         });
