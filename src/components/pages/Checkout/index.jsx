@@ -31,16 +31,29 @@ const CheckoutComponent = () => {
     };
 
     const handlePayment = () => {
-    if (danhSachGheDangChon.length === 0) {
+  if (danhSachGheDangChon.length === 0) {
         alert("Vui lòng chọn ít nhất một ghế!");
         return;
     }
 
-    // Giả lập xử lý thanh toán
-    alert("Thanh toán thành công! Chúc bạn xem phim vui vẻ.");
+    // ✅ ĐÂY LÀ PHẦN BẠN CẦN: Log ra danh sách ghế đang chọn
+    console.log("--- THÔNG TIN THANH TOÁN ---");
+    console.log("Mã lịch chiếu:", id);
+    console.log("Danh sách ghế đã chọn (Full Object):", danhSachGheDangChon);
     
-    // Chuyển hướng về trang chủ
-    navigate("/home");
+    // Nếu bạn muốn log định dạng giống hệt Object yêu cầu của API:
+    const thongTinDatVe = {
+        maLichChieu: id,
+        danhSachVe: danhSachGheDangChon.map(ghe => ({
+            maGhe: ghe.maGhe,
+            giaVe: ghe.giaVe
+        }))
+    };
+    console.log("Dữ liệu chuẩn gửi API:", thongTinDatVe);
+
+    // Thông báo và chuyển hướng
+    alert("Thanh toán thành công! Kiểm tra console để xem danh sách ghế.");
+    // navigate("/home");
 };
 
     // Hàm render danh sách ghế

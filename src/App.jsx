@@ -8,6 +8,10 @@ import LoginComponent from "./components/pages/Login";
 import RegisterComponent from "./components/pages/Register";
 import DetailComponent from "./components/pages/Detail";
 import CheckoutComponent from "./components/pages/Checkout";
+import AdminComponent from "./templates/AdminTemplate";
+import DashboardComponent from "./components/pages/Dashboard";
+import UserComponent from "./components/pages/User";
+import PhimComponent from "./components/pages/Phim";
 
 const App = () => {
   return (
@@ -21,6 +25,11 @@ const App = () => {
        <Route path="/detail/:id" element={<DetailComponent/>}/>
        <Route path="/register" element={<RegisterComponent/>}/>
        <Route path="/checkout/:id" element={<CheckoutComponent/>}/>
+    </Route>
+
+    <Route path="/admin" element={<AdminComponent/>}>
+       <Route path="user" element={<UserComponent/>}/>
+       <Route path="phim" element={<PhimComponent/>}/>
     </Route>
     
    </Routes>
