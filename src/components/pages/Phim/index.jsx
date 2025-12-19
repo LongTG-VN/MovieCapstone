@@ -1,6 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { ListPhimAPI } from './slice';
 
 const PhimComponent = () => {
+  const state =  useSelector((state) => state.ListPhimStore)
+  const {data , error , loading} = state;
+  const dispatch = useDispatch();
+  useEffect(() => {
+       dispatch(ListPhimAPI());
+  },[])
+
+const renderPhim = () => {
+    return data?.map((phim) => {
+ 
+      return (
+        <tr className="hover:bg-gray-50 transition-colors">
+          <td className="px-6 py-4 font-medium text-gray-900">{phim.maPhim}</td>
+          <td className="px-6 py-4"><img src={phim.hinhAnh} alt="" width={60} /></td>
+          <td className="px-6 py-4">{phim.tenPhim}</td>
+          <td className="px-6 py-4 text-gray-600">{phim.danhGia}</td>
+          <td className="px-6 py-4">
+            <div className="flex justify-center gap-x-4">
+              <button className="cursor-pointer px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                Sửa
+              </button>
+              <button className="cursor-pointer px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
+                Xóa
+              </button>
+
+            </div>
+          </td>
+        </tr>
+      )
+    })
+  }
+
   return (
     <div className="p-6 bg-white min-h-screen">
       {/* Header section */}
@@ -31,29 +65,14 @@ const PhimComponent = () => {
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
             <tr>
               <th scope="col" className="px-6 py-4 font-semibold">ID</th>
-              <th scope="col" className="px-6 py-4 font-semibold">Username</th>
-              <th scope="col" className="px-6 py-4 font-semibold">Email</th>
-              <th scope="col" className="px-6 py-4 font-semibold">Phone</th>
+              <th scope="col" className="px-6 py-4 font-semibold">Ảnh chính</th>
+              <th scope="col" className="px-6 py-4 font-semibold">Tên Phim</th>
+              <th scope="col" className="px-6 py-4 font-semibold">Số Điện thoại</th>
               <th scope="col" className="px-6 py-4 font-semibold text-center">Action</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            <tr className="hover:bg-gray-50 transition-colors">
-              <td className="px-6 py-4 font-medium text-gray-900">1</td>
-              <td className="px-6 py-4">Thái Văn A</td>
-              <td className="px-6 py-4">a@gmail.com</td>
-              <td className="px-6 py-4 text-gray-600">010101203</td>
-              <td className="px-6 py-4">
-                <div className="flex justify-center gap-x-2">
-                  <button className="cursor-pointer px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                    Sửa
-                  </button>
-                  <button className="cursor-pointer px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
-                    Xóa
-                  </button>
-                </div>
-              </td>
-            </tr>
+          {renderPhim()}
             {/* Thêm các dòng dữ liệu khác ở đây */}
           </tbody>
         </table>
