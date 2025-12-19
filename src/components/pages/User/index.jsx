@@ -1,35 +1,43 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ListUserAPI } from './slice';
+import { DeleteUserAPI, ListUserAPI } from './slice';
 
 const UserComponent = () => {
   const state = useSelector((state) => state.ListUserStore);
   const dispatch = useDispatch();
   const { data, error, loading } = state;
 
-  const renderUser = () => {
-    return data?.map((user ,index ) => {
-      index += 1;
-      return (
-        <tr className="hover:bg-gray-50 transition-colors">
-          <td className="px-6 py-4 font-medium text-gray-900">{index}</td>
-          <td className="px-6 py-4">{user.hoTen}</td>
-          <td className="px-6 py-4">{user.email}</td>
-          <td className="px-6 py-4 text-gray-600">{user.soDT}</td>
-          <td className="px-6 py-4">
-            <div className="flex justify-center gap-x-4">
-              <button className="cursor-pointer px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                Sửa
-              </button>
-              <button className="cursor-pointer px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
-                Xóa
-              </button>
 
-            </div>
-          </td>
-        </tr>
-      )
-    })
+ const DeleteUser = (taiKhoan) => {
+  if (window.confirm(`Bạn có chắc muốn xóa người dùng ${taiKhoan}?`)) {
+    dispatch(DeleteUserAPI(taiKhoan));
+  }
+}
+  const renderUser = () => {
+   return data?.map((user, index) => {
+    return (
+      // Thêm key ở đây để React quản lý DOM tốt hơn
+      <tr key={user.taiKhoan} className="hover:bg-gray-50 transition-colors">
+        <td className="px-6 py-4 font-medium text-gray-900">{index + 1}</td>
+        <td className="px-6 py-4">{user.hoTen}</td>
+        <td className="px-6 py-4">{user.email}</td>
+        <td className="px-6 py-4 text-gray-600">{user.soDT}</td>
+        <td className="px-6 py-4">
+          <div className="flex justify-center gap-x-4">
+            <button className="cursor-pointer px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+              Sửa
+            </button>
+            <button 
+              onClick={() => DeleteUser(user.taiKhoan)} 
+              className="cursor-pointer px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-colors"
+            >
+              Xóa
+            </button>
+          </div>
+        </td>
+      </tr>
+    );
+  });
   }
 
 
