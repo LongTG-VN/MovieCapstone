@@ -67,7 +67,7 @@ const renderPhim = () => {
               <th scope="col" className="px-6 py-4 font-semibold">ID</th>
               <th scope="col" className="px-6 py-4 font-semibold">Ảnh chính</th>
               <th scope="col" className="px-6 py-4 font-semibold">Tên Phim</th>
-              <th scope="col" className="px-6 py-4 font-semibold">Số Điện thoại</th>
+              <th scope="col" className="px-6 py-4 font-semibold">Đánh giá</th>
               <th scope="col" className="px-6 py-4 font-semibold text-center">Action</th>
             </tr>
           </thead>
