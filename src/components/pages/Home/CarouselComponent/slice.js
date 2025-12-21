@@ -13,7 +13,6 @@ export const ListCarouselAPI = createAsyncThunk (
         try {
          const response = await homeAPI.get("QuanLyPhim/LayDanhSachBanner");
      
-         console.log(response.data.content);
       
          return response.data.content;
        

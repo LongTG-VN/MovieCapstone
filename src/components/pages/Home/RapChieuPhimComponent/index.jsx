@@ -103,7 +103,6 @@ return gioPhut;
   const renderListCumRap = (rap) => {
     return rap.lstCumRap?.map((cumRap, y) => {
       // Key Cấp 2: Kết hợp mã hệ thống và index để đảm bảo KHÔNG BỊ TRÙNG
-      console.log(cumRap.danhSachPhim);
 
       const lstCumRap = `${y + 1}`;
       return {

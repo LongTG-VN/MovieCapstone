@@ -13,7 +13,6 @@ export const RapChieuFilmAPI = createAsyncThunk (
         try {
          const response = await homeAPI.get("QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01");
          
-         console.log(response.data.content);
          
          
          
